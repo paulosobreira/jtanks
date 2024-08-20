@@ -1,1 +1,2 @@
-java br.sowbreira.jtanks.view.MainFrame
+#!/bin/bash
+java -jar target/jtanks-jar-with-dependencies.jar

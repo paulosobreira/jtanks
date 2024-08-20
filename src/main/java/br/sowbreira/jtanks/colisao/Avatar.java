@@ -5,12 +5,12 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 import javax.swing.ImageIcon;
 
 import br.nnpe.ImageUtil;
 import br.sowbreira.jtanks.adaptadoresNet.AdaptadorNetServidor;
-import br.sowbreira.jtanks.view.CarregadorImagens;
 
 
 /**
@@ -42,7 +42,7 @@ public abstract class Avatar implements Runnable {
     public Avatar(String imageGif, Point local, ColisionListener listener)
         throws IOException {
         if (imageGif != null) {
-            icon = new ImageIcon(CarregadorImagens.carregarImagem(imageGif));
+            icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/"+imageGif)));
             avatarImage = ImageUtil.toBufferedImage(icon.getImage());
             avatarImage = ImageUtil.geraTransparencia(avatarImage, Color.WHITE);
         }

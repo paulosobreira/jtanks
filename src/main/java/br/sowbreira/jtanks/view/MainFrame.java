@@ -38,10 +38,10 @@ public class MainFrame extends JFrame {
 		JMenuBar bar = new JMenuBar();
 		setJMenuBar(bar);
 
-		JMenu menu1 = new JMenu("Jogo");
+		JMenu menu1 = new JMenu("Jogo Local");
 		bar.add(menu1);
 
-		JMenu menu3 = new JMenu("Multiplayer");
+		JMenu menu3 = new JMenu("Multijogador");
 		bar.add(menu3);
 
 		JMenu menu2 = new JMenu("Sobre");
@@ -81,21 +81,6 @@ public class MainFrame extends JFrame {
 
 		menu3.add(iniciarServidorUDP);
 
-		JMenuItem iniciarJogoServidor = new JMenuItem("Iniciar Jogo Multiplayer");
-		iniciarJogoServidor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					if (adaptadorNetServidor != null) {
-						adaptadorNetServidor.iniciarJogo();
-					}
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-
-		menu3.add(iniciarJogoServidor);
-
 		JMenuItem conectarServidor = new JMenuItem("Conectar a um servidor");
 		conectarServidor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -113,6 +98,21 @@ public class MainFrame extends JFrame {
 		});
 
 		menu3.add(conectarServidor);
+
+		JMenuItem iniciarJogoServidor = new JMenuItem("Iniciar Jogo");
+		iniciarJogoServidor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					if (adaptadorNetServidor != null) {
+						adaptadorNetServidor.iniciarJogo();
+					}
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+
+		menu3.add(iniciarJogoServidor);
 
 		JMenuItem debugarServidor = new JMenuItem("Debugar Servidor");
 		debugarServidor.addActionListener(new ActionListener() {
@@ -136,21 +136,21 @@ public class MainFrame extends JFrame {
 		menu3.add(debugarServidor);
 
 		// ==============================================================================
-		JMenuItem sobreNet = new JMenuItem("Versão em rede");
+		JMenuItem sobreNet = new JMenuItem("Versão em Multijogador");
 		sobreNet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String msg = "Feito por Paulo Sobreira \n" + "sowbreira@gmail.com \n"
-						+ "https://sowbreira-26fe1.firebaseapp.com/ \n Maio de 2006 Maio de 2023";
+						+ "https://sowbreira-26fe1.firebaseapp.com/ \n Maio de 2006 Agosto de 2024";
 				JOptionPane.showMessageDialog(MainFrame.this, msg, "Sobre", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		menu2.add(sobreNet);
 
-		JMenuItem sobre = new JMenuItem("Versão Single");
+		JMenuItem sobre = new JMenuItem("Versão Local");
 		sobre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String msg = "Feito por Paulo Sobreira \n" + "sowbreira@gmail.com \n"
-						+ "https://sowbreira-26fe1.firebaseapp.com/ \n Setembro de 2005";
+						+ "https://sowbreira-26fe1.firebaseapp.com/ \n Setembro de 2005 Agosto de 2024";
 				JOptionPane.showMessageDialog(MainFrame.this, msg, "Sobre", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
@@ -192,27 +192,8 @@ public class MainFrame extends JFrame {
 		});
 		menu1.add(iniciar);
 
-		JMenuItem telaCheia = new JMenuItem("Tela Cheia");
-		telaCheia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-					GraphicsDevice device = environment.getDefaultScreenDevice();
-					setUndecorated(true);
-					setIgnoreRepaint(true);
-					setResizable(false);
-					if (device.isFullScreenSupported()) {
-						device.setFullScreenWindow(MainFrame.this);
-					}
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-		menu1.add(telaCheia);
-
 		setSize(810, 660);
-		setTitle("JTanks Computação Distribida (Certifique ter 32bit de cor)");
+		setTitle("JTanks Paulo Sobreira");
 
 		setVisible(true);
 	}

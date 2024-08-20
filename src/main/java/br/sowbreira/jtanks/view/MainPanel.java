@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.List;
+import java.util.Objects;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -32,7 +33,7 @@ public class MainPanel extends JPanel {
 
     public MainPanel(String backGroundStr) {
         ImageIcon icon =
-            new ImageIcon(CarregadorImagens.carregarImagem(backGroundStr));
+            new ImageIcon(Objects.requireNonNull(getClass().getResource("/"+backGroundStr)));
         backGround = ImageUtil.toBufferedImage(icon.getImage());
         rectangle =
             new Rectangle(
